@@ -1,0 +1,771 @@
+@font-face{
+  font-family:"Ezerovo";
+  src:url("assets/fonts/Ezerovo-Regular.otf") format("opentype");
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Ezerovo";
+  src:url("assets/fonts/Ezerovo-Bold.otf") format("opentype");
+  font-style:normal;
+  font-weight:700;
+  font-display:swap;
+}
+@font-face{
+  font-family:"Passions Conflict RUS";
+  src:url("assets/fonts/PassionsConflictRUS-Regular.otf") format("opentype");
+  font-style:normal;
+  font-weight:400;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+html,body{
+  width:100%;
+  max-width:100%;
+  margin:0;
+  overflow-x:clip;
+  background:#283a20;
+}
+body.is-locked{overflow:hidden}
+img{display:block;max-width:100%}
+
+.page{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+  opacity:0;
+  transform:translateY(42px);
+  transition:opacity .9s ease,transform 1.05s cubic-bezier(.22,.72,.22,1)
+}
+.page.is-ready{opacity:1;transform:none}
+.site-slice,.site-slice img{display:block;width:100%;height:auto}
+
+/* ---------- FIRST CONTENT SCREEN ---------- */
+.invitation-hero{
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:100%;
+  min-height:100vh;
+  min-height:100svh;
+  overflow:hidden;
+  background:#f2e8c3 url("assets/paper.jpg") center/cover;
+  color:#253818;
+}
+.invitation-hero-title{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:.18em;
+  width:min(78vw,1180px);
+  margin:0;
+  transform:translateY(-1.5%);
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(100px,9.375vw,180px);
+  font-weight:400;
+  line-height:.92;
+  text-align:center;
+}
+.invitation-hero-title span{display:block;white-space:nowrap}
+
+/* ---------- SECOND CONTENT SCREEN ---------- */
+.couple-screen{
+  position:relative;
+  width:100%;
+  aspect-ratio:1920/1222;
+  min-height:620px;
+  overflow:hidden;
+  background:#132014 url("assets/frame2-bg.jpg") center/cover no-repeat;
+  color:#fff;
+}
+.couple-portrait{position:absolute;inset:0}
+.couple-photo{
+  position:absolute;z-index:1;
+  left:12.33%;top:25.37%;width:20.49%;height:auto;
+}
+.couple-frame{
+  position:absolute;z-index:2;
+  left:7.36%;top:14.73%;width:29.97%;height:auto;
+}
+.couple-copy{
+  position:absolute;z-index:3;
+  left:42%;top:36.7%;width:55%;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+.couple-date{
+  margin:0;
+  font-family:"Ezerovo",serif;
+  font-size:clamp(52px,5vw,96px);
+  font-weight:400;line-height:1;white-space:nowrap;
+}
+.couple-date span{display:inline-block;margin:0 .14em}
+.couple-names{
+  margin:.12em 0 0;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(86px,9.375vw,180px);
+  font-weight:400;line-height:.9;white-space:nowrap;
+}
+.couple-caption{
+  margin:.08em 0 0;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(44px,4.7vw,90px);
+  font-weight:400;line-height:1;
+}
+.reveal-on-scroll{
+  opacity:0;
+  transform:translateY(32px);
+  transition:opacity 1.15s ease,transform 1.3s cubic-bezier(.22,.72,.22,1);
+}
+.reveal-on-scroll.is-visible{opacity:1;transform:none}
+
+/* ---------- THIRD CONTENT SCREEN ---------- */
+.welcome-screen{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  min-height:0;
+  padding:clamp(80px,6.25vw,120px) 0;
+  overflow:hidden;
+  background:#283a20;
+  color:#fff;
+}
+.welcome-lace{
+  position:relative;z-index:1;
+  width:100%;height:auto;
+  flex:0 0 auto;
+  pointer-events:none;
+}
+.welcome-lace-bottom{transform:rotate(180deg)}
+.welcome-copy{
+  position:relative;z-index:2;
+  width:min(82%,1160px);
+  margin:clamp(54px,4vw,78px) auto;
+  text-align:center;
+}
+.welcome-copy.reveal-on-scroll{transform:translateY(32px)}
+.welcome-copy.reveal-on-scroll.is-visible{transform:none}
+.welcome-copy h2{
+  margin:0 0 .46em;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(100px,9.375vw,180px);
+  font-weight:400;line-height:.9;
+}
+.welcome-body{
+  font-family:"Ezerovo",serif;
+  font-size:clamp(28px,2.5vw,48px);
+  font-weight:400;line-height:1.45;
+}
+.welcome-body p{margin:0 0 .56em}
+.welcome-body p:last-child{margin-bottom:0}
+
+/* ---------- INTRO ---------- */
+.intro{position:fixed;inset:0;z-index:50;overflow:hidden;cursor:pointer}
+.intro-desktop{position:absolute;inset:0}
+.intro-mobile{display:none}
+.intro-paper{position:absolute;inset:0;background:#f2e8c3 url("assets/paper.jpg") center/cover}
+
+.intro-top-layer{
+  position:absolute;z-index:3;left:0;top:0;width:100%;
+  aspect-ratio:1920/719;
+  will-change:transform,opacity;
+  transition:transform 1.55s cubic-bezier(.76,0,.24,1),opacity .42s 1.08s
+}
+.lace{position:absolute;left:0;width:100%;pointer-events:none}
+.lace-top{inset:0;width:100%;height:auto}
+.lace-bottom{
+  z-index:2;left:0;bottom:0;width:100%;height:51.574vh;object-fit:fill;
+  will-change:transform,opacity;
+  transition:transform 1.55s cubic-bezier(.76,0,.24,1),opacity .42s 1.08s
+}
+.intro-prompt-text{
+  position:absolute;z-index:5;left:50%;top:8%;
+  transform:translateX(-50%);
+  text-align:center;color:#22341f;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(42px,4.4vw,84px);
+  line-height:.82;white-space:nowrap;pointer-events:none;
+  transition:opacity .28s ease,transform .35s ease
+}
+.intro.is-opening .intro-prompt-text{opacity:0;transform:translate(-50%,-8px)}
+.intro.is-opening .intro-top-layer{transform:translateY(-112%);opacity:0}
+.intro.is-opening .lace-bottom{transform:translateY(112%);opacity:0}
+.intro.is-opening .intro-paper{animation:paperAway .5s 1.08s forwards}
+@keyframes paperAway{to{opacity:0}}
+.intro.is-gone{display:none}
+
+/* ---------- CALENDAR ----------
+   The old flattened calendar is gone: this is a real standalone section.
+   The envelope starts exactly 90px after the previous block on desktop. */
+.calendar-section{
+  --gap:0px;
+  position:relative;
+  z-index:2;
+  width:100%;
+  padding-top:0;
+  padding-bottom:0;
+  background:#283a20;
+  overflow:visible;
+}
+.envelope-stage{
+  position:relative;
+  width:100%;
+  aspect-ratio:1624/2153; /* tall enough for the NEW 1(1).svg in full */
+  overflow:visible;
+}
+.calendar-back{
+  position:absolute;z-index:1;
+  left:0;top:0;width:100%;height:auto;
+}
+.calendar-card{
+  position:absolute;z-index:2;
+  width:78.633%;
+  left:10.6835%;
+  top:23.7%;
+  height:auto;
+  transform:translateY(0%);
+  will-change:transform;
+}
+
+/* ---------- FIFTH CONTENT SCREEN ---------- */
+.program-screen{
+  position:relative;
+  width:100%;
+  aspect-ratio:1920/3394;
+  overflow:hidden;
+  background:#283a20;
+  color:#fff;
+}
+.program-title{
+  position:absolute;
+  z-index:2;
+  top:4.55%;left:50%;
+  margin:0;
+  transform:translateX(-50%);
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(110px,10.42vw,200px);
+  font-weight:400;line-height:.95;
+  white-space:nowrap;
+}
+.program-title.reveal-on-scroll{transform:translate(-50%,32px)}
+.program-title.reveal-on-scroll.is-visible{transform:translateX(-50%)}
+.program-item{
+  position:absolute;
+  left:10.8%;
+  width:78.5%;
+  display:grid;
+  grid-template-columns:29% 1fr;
+  column-gap:16%;
+  align-items:center;
+  font-family:"Ezerovo",serif;
+}
+.program-item img{width:100%;height:auto}
+.program-item h3{
+  margin:0 0 .45em;
+  font-size:clamp(38px,3.34vw,64px);
+  font-weight:700;line-height:1.05;
+}
+.program-item p{
+  margin:0;
+  font-size:clamp(28px,2.5vw,48px);
+  font-weight:400;line-height:1.45;
+}
+.program-item-one{top:16.1%}
+.program-item-two{top:34.2%}
+.program-item-three{top:56.6%}
+.program-item-four{top:76.3%}
+.program-item-four p{
+  font-size:clamp(38px,3.34vw,64px);
+  font-weight:700;line-height:1.08;
+}
+
+/* ---------- SIXTH CONTENT SCREEN ---------- */
+.location-screen{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  width:100%;
+  padding:clamp(120px,8vw,154px) 5vw clamp(130px,10vw,192px);
+  overflow:hidden;
+  background:#f2e8c3 url("assets/paper.jpg") center/cover;
+  color:#253818;
+}
+.location-copy{
+  position:relative;
+  width:min(90%,1720px);
+  text-align:center;
+}
+.location-copy.reveal-on-scroll{transform:translateY(32px)}
+.location-copy.reveal-on-scroll.is-visible{transform:none}
+.location-copy h2{
+  margin:0 0 .34em;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(110px,10.42vw,200px);
+  font-weight:400;line-height:.95;
+}
+.location-copy p,
+.location-copy h3{
+  font-family:"Ezerovo",serif;
+  font-size:clamp(38px,3.34vw,64px);
+  line-height:1.09;
+}
+.location-copy p{margin:0 0 .38em;font-weight:400}
+.location-copy h3{margin:.84em 0 .92em;font-weight:700}
+.location-route p{margin-bottom:.42em}
+.location-mobile-text{display:none}
+.route-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:min(66.7%,1028px);
+  min-height:200px;
+  margin:1.03em auto 0;
+  padding:.45em 1em;
+  border-radius:48px;
+  background:#253f20;
+  color:#f2e8c3;
+  font-family:"Ezerovo",serif;
+  font-size:clamp(38px,3.34vw,64px);
+  font-weight:700;
+  line-height:1;
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:transform .22s ease,background-color .22s ease;
+}
+.route-button:hover{background:#31542a;transform:translateY(-3px)}
+.route-button:focus-visible{outline:4px solid #607c50;outline-offset:6px}
+
+/* ---------- SEVENTH CONTENT SCREEN ---------- */
+.wishes-screen{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  background:linear-gradient(to bottom,#283a20 0 90.4%,#f2e8c3 90.4% 100%);
+  color:#253818;
+}
+.wishes-title{
+  position:absolute;z-index:4;
+  top:5.9%;left:50%;
+  margin:0;
+  transform:translateX(-50%);
+  color:#fff;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(80px,7.82vw,150px);
+  font-weight:400;line-height:1;
+}
+.wishes-title.reveal-on-scroll{transform:translate(-50%,32px)}
+.wishes-title.reveal-on-scroll.is-visible{transform:translateX(-50%)}
+.rose-compose{
+  position:relative;
+  width:100%;
+  height:auto;
+  pointer-events:none;
+}
+
+/* ---------- EIGHTH CONTENT SCREEN ---------- */
+.dress-screen{
+  position:relative;
+  width:100%;
+  min-height:0;
+  padding:0 0 clamp(110px,7vw,150px);
+  overflow:hidden;
+  background:#f2e8c3;
+  color:#253818;
+}
+.dress-lace{
+  position:relative;z-index:5;
+  left:0;
+  width:100%;height:auto;
+  pointer-events:none;
+}
+.dress-code{
+  position:relative;z-index:4;
+  width:min(calc(100% - clamp(108px,14vw,280px)),1650px);
+  margin:clamp(130px,8vw,175px) auto 0;
+  text-align:center;
+  font-family:"Ezerovo",serif;
+}
+.dress-code.reveal-on-scroll{transform:translateY(32px)}
+.dress-code.reveal-on-scroll.is-visible{transform:none}
+.dress-code h2{
+  margin:0 0 .48em;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(100px,9.375vw,180px);
+  font-weight:400;line-height:.9;
+}
+.dress-code h3{
+  margin:1.15em 0 .65em;
+  font-size:clamp(38px,3.34vw,64px);
+  line-height:1.1;
+}
+.dress-code p{
+  margin:0;
+  font-size:clamp(28px,2.5vw,48px);
+  line-height:1.45;
+}
+.dress-palette{display:flex;justify-content:center;gap:3.1vw;margin:3.5% auto 3.1%}
+.dress-palette span{display:block;width:9.1vw;max-width:175px;aspect-ratio:1;border-radius:50%}
+.color-blue{background:#adddf7}.color-violet{background:#cea5f7}.color-lilac{background:#edbaf4}.color-pink{background:#ffc2c8}.color-green{background:#acd09d}.color-yellow{background:#fbffa9}.color-brown{background:#9d8060}
+.dress-warning{font-size:clamp(26px,2.3vw,44px)!important}
+.dress-lace-bottom{
+  margin-top:clamp(135px,8.5vw,190px);
+  transform:rotate(180deg);
+}
+
+/* ---------- GUEST QUESTIONNAIRE ---------- */
+.rsvp-screen{
+  position:relative;
+  z-index:2;
+  width:100%;
+  aspect-ratio:1920/1265;
+  overflow:visible;
+  background:#253d1f;
+  color:#fff;
+}
+.rsvp-copy{
+  position:relative;
+  z-index:7;
+  width:min(86%,1500px);
+  margin:0 auto;
+  padding-top:clamp(130px,8.2vw,158px);
+  text-align:center;
+}
+.rsvp-copy h2,.farewell-copy h2{
+  margin:0;
+  font-family:"Passions Conflict RUS",cursive;
+  font-size:clamp(100px,7.82vw,150px);
+  font-weight:400;
+  line-height:1;
+}
+.rsvp-copy p{
+  margin:.48em 0 0;
+  font-family:"Ezerovo",serif;
+  font-size:clamp(30px,2.5vw,48px);
+  line-height:1.42;
+}
+.rsvp-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:min(58%,925px);
+  min-height:130px;
+  margin:1.05em auto 0;
+  padding:.45em 1em;
+  border-radius:48px;
+  background:#fff;
+  color:#253d1f;
+  font-family:"Ezerovo",serif;
+  font-size:clamp(34px,3vw,58px);
+  font-weight:700;
+  line-height:1;
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:transform .22s ease,background-color .22s ease;
+}
+.rsvp-button:hover{background:#f2e8c3;transform:translateY(-3px)}
+.rsvp-button:focus-visible{outline:4px solid #fff;outline-offset:6px}
+.rsvp-roses{
+  position:absolute;
+  z-index:6;
+  bottom:-25%;
+  width:48%;
+  height:auto;
+  pointer-events:none;
+}
+.rsvp-roses-left{left:-12%;transform:rotate(8deg)}
+.rsvp-roses-right{right:-12%;transform:scaleX(-1) rotate(8deg)}
+.calendar-front{
+  position:absolute;
+  z-index:3;
+  left:0;
+  top:0;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  pointer-events:none;
+}
+
+/* ---------- LIVE TIMER ---------- */
+.after-wrap{
+  position:relative;
+  z-index:1;
+  width:100%;
+  aspect-ratio:1920/1653;
+  overflow:hidden;
+  background:linear-gradient(rgba(0,0,0,.33),rgba(0,0,0,.33)),url("assets/farewell-roses.jpg") center/cover no-repeat;
+  color:#fff;
+}
+.farewell-copy{
+  position:absolute;
+  z-index:4;
+  top:31%;
+  left:50%;
+  width:88%;
+  transform:translateX(-50%);
+  text-align:center;
+}
+.farewell-copy.reveal-on-scroll{transform:translate(-50%,32px)}
+.farewell-copy.reveal-on-scroll.is-visible{transform:translateX(-50%)}
+.farewell-copy p{
+  margin:.55em 0 0;
+  font-family:"Ezerovo",serif;
+  font-size:clamp(28px,2.5vw,48px);
+  line-height:1.35;
+}
+.live-countdown{
+  position:absolute;z-index:5;left:50%;top:58%;
+  transform:translateX(-50%);
+  width:72vw;height:1.25em;
+  display:flex;align-items:center;justify-content:center;
+  background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important;
+  color:#fff;font-family:"Ezerovo",serif;font-weight:400;
+  font-size:clamp(42px,4.7vw,90px);line-height:1;white-space:nowrap;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;
+  pointer-events:none
+}
+.timer-fixed{
+  display:grid;
+  grid-template-columns:2ch max-content 8.9ch;
+  column-gap:.28em;
+  align-items:baseline;
+  justify-content:center;
+  width:auto;
+}
+#countDays,#countHours,#countMinutes,#countSeconds{display:inline-block;width:2ch;text-align:center}
+.days-word{
+  display:inline-block;
+  width:auto;
+  text-align:left;
+}
+.colon{display:inline-block;width:.45ch;text-align:center}
+
+@media(max-width:700px){
+  html,body,.page{
+    width:100%;
+    max-width:100vw;
+    min-width:0;
+    overflow-x:clip;
+  }
+  .page>section,
+  .page>.after-wrap{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .intro{
+    width:100vw;
+    max-width:100vw;
+  }
+  .page{transform:translateY(28px)}
+  .invitation-hero-title{
+    gap:.42em;
+    width:82vw;
+    transform:translateY(-1%);
+    font-size:clamp(44px,17.7778vw,64px);
+    line-height:.95;
+  }
+  .couple-screen{
+    aspect-ratio:360/640;
+    min-height:100svh;
+    background-position:center;
+  }
+  .couple-photo{left:29.07%;top:41.56%;width:42.96%}
+  .couple-frame{left:18.7%;top:33.54%;width:62.78%}
+  .couple-copy{left:4%;top:12.8%;width:92%}
+  .couple-date{font-size:clamp(27px,7.5vw,42px)}
+  .couple-date span{margin:0 .11em}
+  .couple-names{margin:.08em 0 0;font-size:clamp(50px,15vw,82px)}
+  .couple-caption{margin:.08em 0 0;font-size:clamp(34px,10vw,54px)}
+  .reveal-on-scroll{transform:translateY(22px)}
+  .welcome-screen{
+    display:flex;
+    flex-direction:column;
+    place-items:stretch;
+    aspect-ratio:auto;
+    min-height:0;
+    padding:clamp(34px,9.5vw,48px) 0;
+  }
+  .welcome-lace{
+    position:relative;
+    left:auto;
+    width:200%;
+    max-width:none;
+    flex:0 0 auto;
+    margin-left:-50%;
+  }
+  .welcome-lace-top{top:auto}
+  .welcome-lace-bottom{bottom:auto;transform:rotate(180deg)}
+  .welcome-copy{
+    position:relative;
+    left:auto;
+    top:auto;
+    width:92%;
+    margin:clamp(20px,6vw,32px) auto;
+    transform:none;
+  }
+  .welcome-copy.reveal-on-scroll{transform:translateY(22px)}
+  .welcome-copy.reveal-on-scroll.is-visible{transform:none}
+  .desktop-break{display:none}
+  .welcome-copy h2{
+    margin:0 0 .72em;
+    font-size:clamp(44px,15vw,68px);
+    line-height:.9;
+  }
+  .welcome-body{
+    font-size:clamp(13px,3.89vw,18px);
+    line-height:1.5;
+  }
+  .welcome-body p{margin-bottom:.68em}
+  .intro-desktop{display:none}
+  .intro-mobile{display:block;position:absolute;inset:0;background:#f2e8c3;overflow:hidden}
+  .intro-mobile-stage{
+    position:absolute;left:50%;top:50%;
+    width:max(100vw,56.25vh);aspect-ratio:360/640;
+    transform:translate(-50%,-50%);
+    overflow:hidden;
+  }
+  .intro-mobile-bg,
+  .intro-mobile-top,
+  .intro-mobile-button{position:absolute;display:block;width:100%;height:auto;left:0}
+  .intro-mobile-bg{inset:0;height:100%;object-fit:cover;z-index:1}
+  .intro-mobile-top{
+    top:0;z-index:3;
+    will-change:transform,opacity;
+    transition:transform 1.35s cubic-bezier(.76,0,.24,1),opacity .32s 1s;
+  }
+  .intro-mobile-button{
+    bottom:0;z-index:2;
+    will-change:transform,opacity;
+    transition:transform 1.35s cubic-bezier(.76,0,.24,1),opacity .32s 1s;
+  }
+  .intro.is-opening .intro-mobile-top{transform:translateY(-110%);opacity:0}
+  .intro.is-opening .intro-mobile-button{transform:translateY(110%);opacity:0}
+  .intro.is-opening .intro-mobile-bg{animation:paperAway .45s 1.02s forwards}
+
+  .calendar-section{
+    --gap:0px;
+    padding-top:0;
+    padding-bottom:0;
+  }
+
+  .program-screen{aspect-ratio:360/754}
+  .program-title{
+    top:7.8%;
+    font-size:clamp(44px,15vw,68px);
+  }
+  .program-title.reveal-on-scroll{transform:translate(-50%,22px)}
+  .program-item{
+    left:10.5%;width:82.5%;
+    grid-template-columns:43% 57%;
+    column-gap:0;
+  }
+  .program-item img{width:85%;justify-self:center}
+  .program-item h3{margin-bottom:.5em;font-size:clamp(16px,4.45vw,22px)}
+  .program-item p{font-size:clamp(10px,2.78vw,14px);line-height:1.32}
+  .program-item-one{top:20.4%}
+  .program-item-two{top:35.5%}
+  .program-item-three{top:56.6%}
+  .program-item-four{top:75.8%}
+  .program-item-four p{font-size:clamp(12px,3.34vw,17px);line-height:1.08}
+
+  .location-screen{
+    padding:clamp(64px,18vw,86px) 3vw clamp(56px,16vw,88px);
+  }
+  .location-desktop-text{display:none}
+  .location-mobile-text{display:block}
+  .location-copy{width:94%}
+  .location-copy.reveal-on-scroll{transform:translateY(22px)}
+  .location-copy h2{
+    margin-bottom:.92em;
+    font-size:clamp(44px,15vw,68px);
+  }
+  .location-copy p{font-size:clamp(13px,3.89vw,18px);line-height:1.24;margin-bottom:.62em}
+  .location-copy h3{font-size:clamp(17px,5vw,24px);line-height:1.1;margin:1.95em 0 2.15em}
+  .location-route p{margin-bottom:.72em}
+  .route-button{
+    width:68%;min-height:49px;
+    margin:3.15em auto 0;
+    padding:.65em .8em;
+    border-radius:12px;
+    font-size:clamp(13px,4.25vw,19px);
+  }
+  .wishes-screen{
+    padding-top:clamp(16px,4vw,24px);
+    background:linear-gradient(to bottom,#283a20 0 90.4%,#f2e8c3 90.4% 100%);
+  }
+  .wishes-title{
+    top:clamp(16px,4vw,24px);
+    font-size:clamp(38px,12vw,48px);
+  }
+  .wishes-title.reveal-on-scroll{transform:translate(-50%,22px)}
+  .rose-compose{width:100%;height:auto}
+  .dress-screen{padding:0 0 clamp(42px,13vw,62px)}
+  .dress-lace{left:-50%;width:200%;max-width:none}
+  .dress-code{
+    width:calc(100% - clamp(44px,14vw,60px));
+    margin-top:clamp(42px,13vw,60px);
+  }
+  .dress-code.reveal-on-scroll{transform:translateY(22px)}
+  .dress-code.reveal-on-scroll.is-visible{transform:none}
+  .dress-code h2{margin-bottom:.62em;font-size:clamp(44px,15vw,68px)}
+  .dress-code h3{margin:1.35em 0 .72em;font-size:clamp(16px,4.45vw,22px)}
+  .dress-code p{font-size:clamp(13px,3.89vw,18px);line-height:1.42}
+  .dress-palette{gap:2.7vw;margin:7.2% auto 5.5%}
+  .dress-palette span{width:11.8vw}
+  .dress-warning{display:none}
+  .color-brown{display:none!important}
+  .dress-lace-bottom{margin-top:clamp(48px,15vw,72px)}
+
+  .rsvp-screen{aspect-ratio:360/395}
+  .rsvp-copy{width:90%;padding-top:clamp(56px,17vw,78px)}
+  .rsvp-copy h2{font-size:clamp(40px,13.4vw,56px)}
+  .rsvp-copy p{margin-top:.68em;font-size:clamp(13px,4.45vw,18px);line-height:1.32}
+  .rsvp-button{
+    width:72%;
+    min-height:50px;
+    margin-top:2.25em;
+    padding:.65em .8em;
+    border-radius:12px;
+    font-size:clamp(14px,4.45vw,20px);
+  }
+  .rsvp-roses{bottom:-24%;width:68%}
+  .rsvp-roses-left{left:-31%}
+  .rsvp-roses-right{right:-31%}
+
+  .after-wrap{aspect-ratio:360/419;background-position:center}
+  .farewell-copy{top:37%;width:92%}
+  .farewell-copy.reveal-on-scroll{transform:translate(-50%,22px)}
+  .farewell-copy.reveal-on-scroll.is-visible{transform:translateX(-50%)}
+  .farewell-copy h2{font-size:clamp(44px,15vw,64px)}
+  .farewell-copy p{margin-top:.7em;font-size:clamp(13px,4.45vw,18px)}
+
+  .live-countdown{
+    display:flex;
+    top:70%;
+    width:96%;
+    font-size:clamp(24px,7.6vw,34px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+
+.live-countdown,
+.timer-fixed{
+  background:transparent!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+
+.timer-clock{
+  display:inline-grid;
+  grid-template-columns:2ch .45ch 2ch .45ch 2ch;
+  align-items:baseline;
+  margin-left:.35em;
+}
